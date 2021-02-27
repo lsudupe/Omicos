@@ -1,0 +1,51 @@
+---
+title: "Datos ómicos unidad 1"
+author: "Laura Sudupe Medinilla"
+date: "27/2/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# EXERCISE 1. expressionSet vignette
+
+- Get the ExpressionSet vignette
+- Create of an expressionSet from scratch
+- Practice access and modification of slot contents, expeacially using exprs() 
+and pData()
+
+
+The definition of the **ExpressionSet** class along with many methods for 
+manipulating **ExpressionSet** objets are defined in the *Biobase* package.
+```{r}
+#install.packages("BiocManager")
+BiocManager::install("Biobase", version = "3.8")
+```
+
+
+The data from many high-throughput genomic experiments, such as microarray 
+experiments, usually consist of several conceptually distinct parts: assay data, 
+phenotypic meta-data, feature annotations and meta-data, and a description of 
+the experiment. We´ll construct each of these components, and then assemble them 
+into an **ExpressionSet**.
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# EXERCISE 2. GEOquery package
+
+
+
