@@ -197,6 +197,13 @@ exampleSet <- ExpressionSet(assayData=exprs,
 - Create an ExpressionSet by downloading a dataset from GEO
 - Investigate the structure of the object
 - Find out how you can access and change
-  - The expression values or
+    - The expression values or
     - the covariates in the phenoData
+
+```{r}
+#download Geoquery
+#BiocManager::install("GEOquery")
+#library("GEOquery")
+#browseVignettes("GEOquery")
+```
 
