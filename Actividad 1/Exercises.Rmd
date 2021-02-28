@@ -154,9 +154,40 @@ Meta-data on features is as important as meta-data on samples, the idea is to
 construct specialized meta-data packages for each type of chip or instrument.
 There are a lot of them availables in Bioconductor, also, there are other meta
 data packages provides by other initiatives such as GO and KEEG.
+```{r}
+annotation <- "hgu95av2"
+```
 
 
 
+## Experiment description
+
+Basic description about the experiment (the investigator or lab, title) can be
+recorded by creating a *MIAME* object.
+```{r}
+experimentData <- new("MIAME",
+                      name="Pierre Fermat",
+                      lab="Francis Galton Lab",
+                      contact="pfermat@lab.not.exist",
+                      title="Smoking-Cancer Experiment",
+                      abstract="An example ExpressionSet",
+                      url="www.lab.not.exist",
+                      other=list(
+                      notes="Created from text files"
+                      ))
+```
+
+
+## Assembling an *ExpressionSet*
+
+An *ExpressionSet* object is created by assembling its component parts and 
+calling the **ExpressionSet** constructor
+```{r}
+exampleSet <- ExpressionSet(assayData=exprs,
+                            phenoData=phenoData,
+                            experimentData = experimentData,
+                            annotation = "hgu95av2")
+```
 
 
 # EXERCISE 2. GEOquery package
