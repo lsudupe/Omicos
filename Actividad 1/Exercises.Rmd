@@ -9,6 +9,12 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+
+```
+
+
+
 # EXERCISE 1. expressionSet vignette
 
 - Get the ExpressionSet vignette
@@ -21,7 +27,8 @@ The definition of the **ExpressionSet** class along with many methods for
 manipulating **ExpressionSet** objets are defined in the *Biobase* package.
 ```{r}
 #install.packages("BiocManager")
-BiocManager::install("Biobase", version = "3.8")
+#BiocManager::install("Biobase")
+library("Biobase")
 ```
 
 
@@ -30,11 +37,50 @@ experiments, usually consist of several conceptually distinct parts: assay data,
 phenotypic meta-data, feature annotations and meta-data, and a description of 
 the experiment. We´ll construct each of these components, and then assemble them 
 into an **ExpressionSet**.
-```{r}
 
+## Assay data
+
+Matrix of "expression" values from the experiment. The values usually derived 
+from microarrays of one sort or another, perphaps after initial processing by 
+manufactuer software or Bioconductor packages.
+
+The matrix has F rows and S columns, where *F* is the number of features on the 
+chip and *S* is the number of samples.
+
+```{r}
+dataDirectory <- system.file("extdata", package="Biobase")
+exprsFile <- file.path(dataDirectory, "exprsData.txt")
+
+#These first two lines create a file path pointing to where the assay data is 
+#stored
+
+exprs <- as.matrix(read.table(exprsFile, header=TRUE, sep="\t",
+                              row.names=1,
+                              as.is=TRUE))
 ```
 
+Lets verify that the data have read matches your expectations. At minimun, check
+the class and dimensions of **geneData** and take a peak at the first several 
+rows
 
+```{r}
+class(exprs)
+```
+```{r}
+dim(exprs)
+```
+```{r}
+colnames(exprs)
+```
+```{r}
+head(exprs[,1:5])
+```
+We create a minimal *ExpressionSet* object using the **ExpressionSet** 
+constructor:
+
+```{r}
+minimalSet <- ExpressionSet(assayData = exprs)
+```
 
 
 
