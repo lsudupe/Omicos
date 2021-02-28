@@ -150,6 +150,11 @@ phenoData[c("A", "Z"), "gender"]
 
 ## Annotations and feature data
 
+Meta-data on features is as important as meta-data on samples, the idea is to 
+construct specialized meta-data packages for each type of chip or instrument.
+There are a lot of them availables in Bioconductor, also, there are other meta
+data packages provides by other initiatives such as GO and KEEG.
+
 
 
 
