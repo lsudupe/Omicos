@@ -83,9 +83,72 @@ minimalSet <- ExpressionSet(assayData = exprs)
 ```
 
 
+## Phenotypic data
 
+Phenotypic data summarizes information about samples (sex, age, and treatment 
+status;refererd to as "covariates"). The information describing the samples can 
+be represented as a table with *S* rows and *V* columns, where *v* is the number
+of covariates.
 
+```{r}
+pDataFile <- file.path(dataDirectory, "pData.txt")
+pData <- read.table(pDataFile, 
+                    row.names=1,
+                    header=TRUE,
+                    sep="\t")
+                    
+dim(pData)
+```
+```{r}
+rownames(pData)
+summary(pData)
+```
+Note thar the number of rows of phenotypic data amtch the number of columns of 
+expression data, and indeed that the row and columns names are identically ordered.
+```{r}
+all(rownames(pData)==colnames(exprs))
+```
+Phenotypic data can take a lot of different forms. Some covariates might be
+represented as numeric values. Others (gender, tissue type, cancer status) might
+better be represented as **factor** objets. It is especially important that the
+phenotypic data are encoded correctly.
 
+```{r}
+#We can deermine the classes of each column with sapply
+sapply(pData, class)
+```
+What is the sex and Case/Control status of the 15th and 20th samples? And for 
+the sample(s) with score greater than 0.8.
+```{r}
+pData[c(15,20), c("gender", "type")]
+pData[pData$score>0.8,]
+```
+When the column names doesn´t provide enough information about the covariate
+we can create a dataframe containing such meta-data, or read the information from
+a file using read.table
+```{r}
+metadata <- data.frame(labelDescription=
+                         c("Patient gender",
+                           "Case/control status",
+                           "Tumor progress on XYZ scale"),
+                       row.names = c("gender", "type", "score"))
+```
+
+Bioconductor´s **Biobase** package provides a class called *AnnotatedDataFrame**
+that conveniently stores and manipulates the phenotypic data and its metadata in 
+a coordinated fashion
+```{r}
+phenoData <- new("AnnotatedDataFrame", 
+                 data=pData, varMetadata=metadata)
+```
+
+This *AnnotatedDataFrame* objects can be subset much like a *dataframe*
+```{r}
+head(pData(phenoData))
+phenoData[c("A", "Z"), "gender"]
+```
+
+## Annotations and feature data
 
 
 
@@ -93,5 +156,11 @@ minimalSet <- ExpressionSet(assayData = exprs)
 
 # EXERCISE 2. GEOquery package
 
-
+- Install and load the GEOquery package
+  - Browse te GEPquery vignette
+- Create an ExpressionSet by downloading a dataset from GEO
+- Investigate the structure of the object
+- Find out how you can access and change
+  - The expression values or
+    - the covariates in the phenoData
 
