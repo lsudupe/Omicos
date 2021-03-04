@@ -302,9 +302,23 @@ information are in the same order.
 
 # EXERCISE 3
 
-## What kind of design of experiments do they use?
+## What kind of experiments design do they use?
+
+They use the *class comparison* method. The objective is to determine if the 
+expression profile in the previously identified groups are different
 
 ## What strategy would you use to determine the correct sample size for the experiment?
+
+
+We have to take a look at some performance metrics, for example, precision, 
+reproducibility, sensitivity ... of the method we use. In this case, the 
+microarray technology. These metrics are relevant to statistical analyses that 
+aim to detect diferential features, due to their impact on the number of 
+replicates required to achive a given statistical power. 
+
+
+So, first of all we have to understand the question we want to answer and verify
+a good strategy to obtain the best values in performance metrics.
 
 
 
