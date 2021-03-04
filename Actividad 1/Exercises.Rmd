@@ -13,9 +13,33 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
+# EXERCISE 1
+
+## Study tittle
+“Identidication of aberrant circRNAs in peripheral whole blood of patients with 
+Alzheimer´s disease (human)”
+
+## Microarray Type
+Arraystar Super RNA Labeling Kit; Arraystar
+
+## Number of samples and groups
+50 participants with AD (Alzheimer's disease), 50 control subjects, 20 subjects 
+with MCI and 40 subjects with RV. For this study, they chose 5 random blood 
+samples from AD patients.
+
+## Main question to answer
+They use circRNA hsa_circ_0003391, which is downregulated (less than normal) in 
+the blood of AD patients, as a biomarker of the disease.
+
+## Data and paper links
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7793744
+
+- GEO - GSE161435
+  https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi
 
 
-# EXERCISE 1. expressionSet vignette
+
+# EXERCISE 2.1 expressionSet vignette
 
 - Get the ExpressionSet vignette
 - Create of an expressionSet from scratch
@@ -190,7 +214,7 @@ exampleSet <- ExpressionSet(assayData=exprs,
 ```
 
 
-# EXERCISE 2. GEOquery package
+# EXERCISE 2.2 GEOquery package
 
 - Install and load the GEOquery package
   - Browse te GEPquery vignette
