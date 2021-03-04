@@ -9,10 +9,6 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-
-```
-
 # EXERCISE 1
 
 ## Study tittle
@@ -171,7 +167,6 @@ This *AnnotatedDataFrame* objects can be subset much like a *dataframe*
 head(pData(phenoData))
 phenoData[c("A", "Z"), "gender"]
 ```
-
 ## Annotations and feature data
 
 Meta-data on features is as important as meta-data on samples, the idea is to 
@@ -181,7 +176,6 @@ data packages provides by other initiatives such as GO and KEEG.
 ```{r}
 annotation <- "hgu95av2"
 ```
-
 
 
 ## Experiment description
@@ -227,7 +221,7 @@ exampleSet <- ExpressionSet(assayData=exprs,
 ```{r}
 #download Geoquery
 #BiocManager::install("GEOquery")
-#library("GEOquery")
+library("GEOquery")
 #browseVignettes("GEOquery")
 ```
 
@@ -238,10 +232,9 @@ gse161435 <- getGEO("GSE161435", GSEMatrix = TRUE)
 ```{r}
 show(gse161435)
 ```
-## Create a ExpressionSet
-
 GEO Series are collections of related experiments. The getGEO() function can 
-handle this format and will parse very large GSEs returning a lis of ExpressionSets
+handle this format and will parse very large GSEs returning a lis of 
+ExpressionSets
 ```{r}
 show(pData(phenoData(gse161435[[1]]))[1:6, c(1,6,8)])
 ```
@@ -307,20 +300,11 @@ data.matrix[1:5,]
 Note that we do a match() to make sure that the values and the platform 
 information are in the same order.
 
-Finally, to make the ExpressionSet()
-```{r}
-require(Biobase)
+# EXERCISE 3
 
-# go through the necessary steps to make a compliant ExpressionSet
-rownames(data.matrix) <- probesets
-colnames(data.matrix) <- names(gsmlist)
-pdata <- data.frame(samples=names(gsmlist))
-rownames(pdata) <- names(gsmlist)
-pheno <- as(pdata,"AnnotatedDataFrame")
-eset2 <- new('ExpressionSet',exprs=data.matrix,phenoData=pheno)
-eset2
-```
+## What kind of design of experiments do they use?
 
+## What strategy would you use to determine the correct sample size for the experiment?
 
 
 
