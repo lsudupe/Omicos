@@ -1,0 +1,22 @@
+---
+title: "Microarray Analysis"
+author: "Laura Sudupe Medinilla"
+date: "22/3/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Reading raw data
+
+# Quality check
+
+# Normalization
+
+# Filtering
+
+# Selection of differentially expressed genes
+
+# Comparison of selected lists and biological significance
