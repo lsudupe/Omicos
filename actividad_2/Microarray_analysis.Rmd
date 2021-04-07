@@ -1,7 +1,7 @@
 ---
-title: "Microarray Analysis"
+title: "Microarray and gene list analysis"
 author: "Laura Sudupe Medinilla"
-date: "22/3/2021"
+date: "07/4/2021"
 output: pdf_document
 ---
 
@@ -9,7 +9,69 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Abstract
+
+Microarray data analysis has been one of the most important hits in the interaction between statistics and bioinformatics in the last two decades. Here, a typical workflow which starts with the raw data and goes through a series of steps;
+
+### Reading raw data
+### Quality Check
+### Normalization
+### Filtering
+### Selection of differentialy expressed genes
+### Comparison of selected lists
+### Analysis of Biological
+
+
+# Data
+
+We are going to use a microarray data from Gene Expression Omnibus (GEO) with the number of accession GSE171491. Link: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE171491
+
+
+
+# Enviroment preparation
+
+Data analyst will have manage a lot of files, including the files with the raw data (.CEL files) and the files generated during the analysis of them. For this reason, we are going to define some folders.
+
+- Main folder called "prtmicroarrayanalysis"
+- Folder called __data__ located in the worked directory. Here we will save all the __.CEL__ files and _target_ file with information on the covariates.
+- Folder called __results__ located in the working directory. Here we will send all the results obtained in the microarray analysis.
+
+
+```{r CreateFolders, warning=FALSE}
+
+prtmicroarrayanalisis <- getwd()
+
+dir.create("data")
+data <- file.path(prtmicroarrayanalisis, "data")
+dir.create("results")
+results <- file.path(prtmicroarrayanalisis, "results")
+
+setwd(prtmicroarrayanalisis)
+
+```
+
+
+# Prepare the data for the analysis
+
+
+```{r}
+#library("GEOquery")
+#gseBreast <- getGEO("GSE1561", GSEMatrix=TRUE)
+show(gseBreast)
+```
+```{r}
+
+```
+
+
 # Reading raw data
+## Read the CEL files
+
+```{r}
+library(oligo)
+celFiles <- list.celfiles
+```
+
 
 # Quality check
 
