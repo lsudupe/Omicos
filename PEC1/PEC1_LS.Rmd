@@ -1,0 +1,84 @@
+---
+title: 'Omic Data Analysis PEC1'
+author: 'Laura Sudupe Medinilla'
+subtitle: '`r params$subtitulo`'
+date: '`r format(Sys.Date(),"%e de %B, %Y")`' 
+# date: \today  (solo para pdf)
+abstract:
+output:
+  pdf_document:
+    keep_tex: yes
+    toc: yes
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_float: true
+    theme: united
+    higlight: tango
+header-includes: \usepackage[spanish]{babel}
+params:
+  file1: genotype.csv
+  file2: flowering_time.csv
+  folder.data: ./floweringTime
+  b: 40
+  p.train: 0.66667
+  subtitulo: Analysis of microarray data
+  valor.seed: 12345
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NULL)
+options(width=90)
+```
+
+# Objetives
+# Methods and Materials
+## Software
+
+```{r libraries, warning=FALSE, message=FALSE, echo=TRUE}
+
+```
+
+
+
+
+
+
+## Data
+## Analysis
+
+### Identification of the groups and the samples groups
+### Exploration and quality control of the raw data
+### Normalization
+### Quality control of the processed data (optional)
+### No-especific filtering (optional)
+### Identification of the differencialy expressed genes
+### Results annotations
+### Diferent comparation comparations
+### Biologic signification analysis ("Gene Enrichment Analysis")
+
+
+
+
+# Results
+# Discusion
+# Apendice
+```{r packages, message=FALSE, echo=FALSE, warning=FALSE}
+libraries <- c("e1071", "gmodels",  "ROCR", "caret")
+check.libraries <- is.element(libraries, installed.packages()[, 1])==FALSE
+libraries.to.install <- libraries[check.libraries]
+if (length(libraries.to.install!=0)) {
+  install.packages(libraries.to.install)
+}
+library("e1071")
+library("gmodels")
+library("ROCR")
+library("caret")
+```
+
+
+\pagebreak
+
+
+
+
